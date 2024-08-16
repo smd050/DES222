@@ -1,0 +1,559 @@
+/* 
+Color pallete. This section defines variables for the color pallete,
+so that we can refer to particular colors by name instead of hexadecimal values.
+This is applied to the 'root' psuedo-element, which just means that these color
+variables are available to be used anywhere in our html document
+*/
+:root {
+    --white-font: #FFFFFF;
+    --black-font: #000000;
+    /* add in other color variables for color pallete */
+    --thirdColour: #0B1D51;
+    --fourthColour: #797596;
+    --fifthColour: #A1869E;
+    --sixthColour: #BBADA0;
+    --sevenColour: #D1C6AD;
+}
+
+
+body {
+    background: linear-gradient(to bottom, #0B1D51, #2f75d1); /* Define the gradient direction and colors */
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+
+.nav-container{
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Defines the main container size, we are limiting to 72em max and centring in the viewport */
+.main-container {
+    max-width: 72em;
+    margin: 0 auto;
+    font-family: Inter;
+    /* TODO: set the main font color */
+}
+
+/* Here we define the aspects of style of our elements other than their grid layout */
+.banner {
+    /* TODO: banner styling */
+    background-color: var(--thirdColour);
+    color: var(--white-font);
+    border-radius: 10px;
+    padding: 0.1em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+/* Here we define the aspects of style of our elements other than their grid layout */
+.footer {
+    /* TODO: banner styling */
+    background-color: #FFFFFF;
+    color: #000000;
+    padding: 0.1em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.IT-logo{
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center the logo vertically (if needed) */
+    padding: 10px;
+}
+.IT-logo img {
+    max-width: 50%; /* Make the image responsive to the container's width */
+    height: auto; /* Maintain aspect ratio */
+    width: 75px; /* Set an initial width; this will shrink as needed */
+    transition: width 0.3s ease; /* Smooth transition when resizing */
+}
+
+/* Adjust the image size based on screen width */
+@media (max-width: 768px) {
+    .IT-logo img {
+        width: 100px; /* Smaller width for tablets and small screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .IT-logo img {
+        width: 75px; /* Smaller width for mobile devices */
+    }
+}
+
+
+.banner-title {
+    /* TODO: banner main title font styling */
+    font-size: 1.8em;
+    padding: 0.125em;
+    padding-left: 0.3em;
+}
+
+.banner-subtitle {
+    /* TODO: banner subtitle font styling */
+    font-size: 0.70em;
+    padding: 0.05em;
+    padding-left: 0.1em;
+}
+
+
+/*aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa*/
+
+.goal-section {
+    display: flex;
+    flex-wrap: wrap; /* Allows the content to wrap to the next line */
+    align-items: center;
+    justify-content: space-evenly; /* Evenly space the goals */
+    gap: 10px; /* Add space between goals */
+}
+
+.goal {
+    flex: 1 1 30%; /* Each goal takes up about 30% of the container on large screens */
+    min-width: 250px; /* Ensure a minimum width for each goal */
+}
+
+@media (max-width: 1024px) {
+    .goal {
+        flex: 1 1 45%; /* On tablets, 2 goals per row */
+    }
+}
+
+@media (max-width: 768px) {
+    .goal {
+        flex: 1 1 100%; /* On mobile phones, stack goals vertically */
+    }
+}
+
+/*aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa*/
+
+.course-section {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    grid-template-columns: repeat(4, 1fr); /* 4 items per row on large screens */
+    gap: 20px; /* Space between items */
+    padding: 20px;
+}
+
+.course-item {
+    background-color: #f4f4f4; /* Example background color for each course item */
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+@media (max-width: 1200px) {
+    .course-section {
+        grid-template-columns: repeat(3, 1fr); /* 3 items per row on medium screens */
+    }
+}
+
+@media (max-width: 900px) {
+    .course-section {
+        grid-template-columns: repeat(1, 1fr); /* 2 items per row on smaller screens */
+    }
+}
+
+.flip-card {
+    background-color: transparent;
+    border-radius: 10px;
+    margin: 1em;
+    width: 27em;
+    height: 27em;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  }
+  
+  /* This container is needed to position the front and back side */
+  .flip-card-inner {
+    position: relative;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  /* Do an horizontal flip when you move the mouse over the flip box container */
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  /* Position the front and back side */
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+  }
+  
+  /* Style the front side (fallback if image is missing) */
+  .flip-card-front {
+    background-color: #bbb;
+    border-radius: 10px;
+    color: black;
+  }
+  
+  /* Style the back side */
+  .flip-card-back {
+    background-color: dodgerblue;
+    border-radius: 10px;
+    color: white;
+    transform: rotateY(180deg);
+  }
+
+/* this is the equivalent of setting the image rectangle to "Fill Container" in Figma */ 
+.team-member-card-image {
+    width: 100%;
+    max-height: 27em;
+    border-radius: 10px;
+}
+
+h1{
+    font-size: 2em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+h3{
+    font-size: 1em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 1em;
+}
+
+
+
+/*aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa*/
+
+/* this is the equivalent of setting the image rectangle to "Fill Container" in Figma */ 
+.client-card {
+    border-radius: 10px;
+    width: 20em;
+    height: 15em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* This container is needed to position the front and back side */
+.client-card-inner {
+    position: relative;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  /* Do an horizontal flip when you move the mouse over the flip box container */
+  .client-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  /* Position the front and back side */
+  .client-card-front, .flip-card-back {
+    position: absolute;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+  }
+  
+  /* Style the front side (fallback if image is missing) */
+  .client-card-front {
+    background-color: #bbb;
+    border-radius: 10px;
+    color: black;
+  }
+  
+  /* Style the back side */
+  .client-card-back {
+    background-color: dodgerblue;
+    border-radius: 10px;
+    color: white;
+    transform: rotateY(180deg);
+  }
+
+  /* this is the equivalent of setting the image rectangle to "Fill Container" in Figma */ 
+.course-card-image {
+    width: 100%;
+    max-height: 15em;
+    border-radius: 10px;
+}
+
+
+/*aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa*/
+
+
+/* Use a flexible layout grid */
+.main-container {
+    display: grid;
+    column-gap: 1em;
+}
+  
+/* 
+Responsive Layout breakpoints. We start 'mobile-first' i.e. we define how the layout should look
+for the smallest screen sizes. In this case we want a single column that spans the main container.
+Because this CSS definition comes first, it will apply by default. Then we override it below with 
+media queries for progressively bigger screen widths
+*/
+.main-container {
+    /* TODO: setup the grid-template for mobile phone layout */
+    display: grid;
+    column-gap: 1em;
+}
+
+@media (min-width: 50em) {
+    .main-container {
+            /* TODO: setup the grid-template for tablet layout */
+    }
+}
+
+@media (min-width: 75em) {
+    .main-container {
+        /* TODO: setup the grid-template for desktop layout */
+    }
+}
+
+
+
+/*aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa*/
+.background-container {
+    background-image: url('images/night-view-victoria-harbor-hong-kong.jpg'); /* Path to your background image */
+    background-size: cover; /* Ensure the background covers the entire div */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent the background from repeating */
+    padding: 20px; /* Add some padding to ensure content isn't right at the edges */
+    color: white; /* Set text color to ensure it's visible over the background */
+    height: 500px; /* Optional: set a fixed height */
+    display: flex; /* Optional: use Flexbox to align content */
+    align-items: center; /* Center content vertically */
+    justify-content: center; /* Center content horizontally */
+    text-align: center; /* Center the text inside */
+    margin-top: 0.5em;
+    
+}
+
+
+.sign {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60vw; /* Width relative to the viewport width */
+    height: 20vh; /* Height relative to the viewport height */
+    background-image: radial-gradient(
+      ellipse 50% 35% at 50% 50%,
+      #ffffff,
+      transparent
+    );
+    transform: translate(-50%, -50%);
+    letter-spacing: 0.5vw; /* Letter spacing relative to the viewport width */
+    left: 50%;
+    top: 50%;
+    font-family: "Clip";
+    text-transform: uppercase;
+    font-size: 7vw; /* Font size relative to the viewport width */
+    color: #EBF1FF;
+    text-shadow: 0 0 1vw #EBF1FF, 0 0 2vw #3370FF,
+      -0.5vw 0.25vw 1vw #3370FF, 0.5vw 0.25vw 1vw #3370FF,
+      0 -1.5vw 2vw #001852, 0 1.5vw 3vw #001852;
+    animation: shine 2s forwards, flicker 3s infinite;
+    padding: 2vw; /* Padding relative to the viewport width */
+}
+  
+  @keyframes blink {
+    0%,
+    22%,
+    36%,
+    75% {
+      color: #EBF1FF;
+      text-shadow: 0 0 0.6rem #EBF1FF, 0 0 1.5rem #3370FF,
+        -0.2rem 0.1rem 1rem #3370FF, 0.2rem 0.1rem 1rem #3370FF,
+        0 -0.5rem 2rem #001852, 0 0.5rem 3rem #001852;
+    }
+    28%,
+    33% {
+      color: #3370FF;
+      text-shadow: none;
+    }
+    82%,
+    97% {
+      color: #001852;
+      text-shadow: none;
+    }
+  }
+  
+  .flicker {
+    animation: shine 2s forwards, blink 3s 2s infinite;
+  }
+  
+  .fast-flicker {
+    animation: shine 2s forwards, blink 10s 1s infinite;
+  }
+  
+  @keyframes shine {
+    0% {
+      color: #6b1839;
+      text-shadow: none;
+    }
+    100% {
+      color: #EBF1FF;
+      text-shadow: 0 0 0.6rem #EBF1FF, 0 0 1.5rem #3370FF,
+        -0.2rem 0.1rem 1rem #3370FF, 0.2rem 0.1rem 1rem #3370FF,
+        0 -0.5rem 2rem #001852, 0 0.5rem 3rem #001852;
+    }
+  }
+  
+  @keyframes flicker {
+    from {
+      opacity: 1;
+    }
+  
+    4% {
+      opacity: 0.9;
+    }
+  
+    6% {
+      opacity: 0.85;
+    }
+  
+    8% {
+      opacity: 0.95;
+    }
+  
+    10% {
+      opacity: 0.9;
+    }
+  
+    11% {
+      opacity: 0.922;
+    }
+  
+    12% {
+      opacity: 0.9;
+    }
+  
+    14% {
+      opacity: 0.95;
+    }
+  
+    16% {
+      opacity: 0.98;
+    }
+  
+    17% {
+      opacity: 0.9;
+    }
+  
+    19% {
+      opacity: 0.93;
+    }
+  
+    20% {
+      opacity: 0.99;
+    }
+  
+    24% {
+      opacity: 1;
+    }
+  
+    26% {
+      opacity: 0.94;
+    }
+  
+    28% {
+      opacity: 0.98;
+    }
+  
+    37% {
+      opacity: 0.93;
+    }
+  
+    38% {
+      opacity: 0.5;
+    }
+  
+    39% {
+      opacity: 0.96;
+    }
+  
+    42% {
+      opacity: 1;
+    }
+  
+    44% {
+      opacity: 0.97;
+    }
+  
+    46% {
+      opacity: 0.94;
+    }
+  
+    56% {
+      opacity: 0.9;
+    }
+  
+    58% {
+      opacity: 0.9;
+    }
+  
+    60% {
+      opacity: 0.99;
+    }
+  
+    68% {
+      opacity: 1;
+    }
+  
+    70% {
+      opacity: 0.9;
+    }
+  
+    72% {
+      opacity: 0.95;
+    }
+  
+    93% {
+      opacity: 0.93;
+    }
+  
+    95% {
+      opacity: 0.95;
+    }
+  
+    97% {
+      opacity: 0.93;
+    }
+  
+    to {
+      opacity: 1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .sign {
+        font-size: 8vw; /* Adjust font size for smaller screens */
+        width: 90vw; /* Adjust width for smaller screens */
+        height: 50vh; /* Adjust height for smaller screens */
+        letter-spacing: 0.4vw;
+        padding: 1.5vw;
+    }
+}
+
+@media (max-width: 480px) {
+    .sign {
+        font-size: 6vw; /* Further adjust font size for very small screens */
+        width: 95vw;
+        height: 60vh;
+        letter-spacing: 0.3vw;
+        padding: 1vw;
+    }
+}
+
+.footer-items{
+    justify-content: space-between;
+    display: flex;
+}
